@@ -20,6 +20,10 @@ const movies = [
     {
         title: "오디세이", year: 2026, date: "2026-07-15",
         rating: 8.01, poster: "/8ze9OcVuFiy94s6FFPvsn4oC2e1.jpg" 
+    },
+    {
+        title: "암살자(들)", year: 2026, date: "2026-09-23",
+        rating: 7.2, poster: "/c55ijsOdntj6P25vDwHLdgsBpmV.jpg" 
     }
 ];
 

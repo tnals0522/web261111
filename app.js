@@ -50,9 +50,28 @@ console.log(yearsSince(movies[0].date) + "년 전 개봉");
 const posterUrl = (path, size) => {
     return "https://image.tmdb.org/t/p/" + size + path;
 }
-console.log(posterUrl(movies[0].poster, "w342")); 
+console.log(posterUrl(movies[0].poster, "w342"));
 
-document.title = "내 영화 " + movies.length + "편";
-console.table(sortByRating(movies));
-document.getElementById("out").textContent = "평균 " + average(movies).toFixed(1) + "점, 최고 " +
-best(movies).title; 
+// renderCards : 영화 배열 ⇒ 보드에 카드 생성(반환값 없음)
+function renderCards(list) {
+    const board = document.querySelector(".board");
+    board.innerHTML = "";
+    for (const m of list) {
+        const card = document.createElement("article");
+        card.className = "card";
+        if (m.rating >= 8) {
+             card.classList.add("hot");
+        } 
+        card.innerHTML = `
+ <img class="poster" src="${posterUrl(m.poster, "w342")}" alt="${m.title} 포스터">
+ <span class="badge">${m.rating}</span>
+ <div class="info">
+    <h2>${m.title}</h2>
+    <p class="year">${m.year}</p>
+ </div>`;
+        board.appendChild(card);
+
+        document.querySelector("#count").textContent = list.length + "편";
+    }
+}
+renderCards(movies);
