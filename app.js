@@ -60,8 +60,8 @@ function renderCards(list) {
         const card = document.createElement("article");
         card.className = "card";
         if (m.rating >= 8) {
-             card.classList.add("hot");
-        } 
+            card.classList.add("hot");
+        }
         card.innerHTML = `
  <img class="poster" src="${posterUrl(m.poster, "w342")}" alt="${m.title} 포스터">
  <span class="badge">${m.rating}</span>
@@ -76,17 +76,17 @@ function renderCards(list) {
 }
 // sortBy : 영화 배열, 키 이름, 내림차순 여부 ⇒ 정렬한 새 배열(원본은 그대로)
 function sortBy(list, key, desc) {
- const copy = [...list];
- copy.sort((a, b) => {
- if (typeof a[key] === "string") return a[key].localeCompare(b[key]);
- return a[key] - b[key];
- });
- if (desc) copy.reverse();
- return copy;
+    const copy = [...list];
+    copy.sort((a, b) => {
+        if (typeof a[key] === "string") return a[key].localeCompare(b[key]);
+        return a[key] - b[key];
+    });
+    if (desc) copy.reverse();
+    return copy;
 }
 // applySort : 선택 상자 값으로 정렬해서 다시 그리기(반환값 없음)
 function applySort() {
- const key = document.getElementById("sort").value;
- renderCards(sortBy(movies, key, key !== "title"));
+    const key = document.getElementById("sort").value;
+    renderCards(sortBy(movies, key, key !== "title"));
 }
-renderCards(movies);
+applySort();
